@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Radiant AI Before & After Results</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-slate-800 antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-slate-200/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="font-display font-bold text-xl tracking-tight text-slate-900">Radiant AI</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#product" class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Product</a>
+                    <a href="index.html#features" class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Features</a>
+                    <a href="gallery.html" class="nav-link text-sm font-medium text-blue-600 transition-colors">Gallery</a>
+                    <a href="index.html#comparison" class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Comparison</a>
+                    <a href="index.html#labsync" class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">LabSync PDF</a>
+                    <a href="index.html#contact" class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="bg-slate-900 hover:bg-slate-800 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all hover:shadow-lg hover:shadow-slate-900/20 transform hover:scale-105">
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery Header -->
+    <section class="relative pt-32 pb-16 bg-gradient-to-br from-slate-50 to-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto reveal">
+                <div class="inline-flex items-center space-x-2 tech-badge px-4 py-2 rounded-full mb-6">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
+                    <span class="text-xs font-semibold text-blue-900 tracking-wide uppercase">Real Results</span>
+                </div>
+                
+                <h1 class="font-display text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
+                    Before & After
+                    <span class="block gradient-text mt-2">Gallery</span>
+                </h1>
+                
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    See the transformative power of Radiant AI's classical image correction algorithms. Click any image to view it in full size.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div id="galleryGrid" class="grid md:grid-cols-2 gap-8">
+                <!-- Gallery items will be injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-slate-900/95 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <button id="closeImageModal" class="absolute top-8 right-8 text-white hover:text-slate-300 z-10">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <button id="modalPrev" class="absolute left-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-4 rounded-full transition-all z-10">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+        
+        <button id="modalNext" class="absolute right-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-4 rounded-full transition-all z-10">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+        
+        <div class="max-w-6xl w-full">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-2xl">
+                <div class="bg-slate-900 px-6 py-4 flex items-center justify-between">
+                    <div>
+                        <h3 id="modalTitle" class="font-semibold text-white text-lg"></h3>
+                        <p class="text-slate-400 text-sm">Click and drag the slider to compare</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <span class="text-xs bg-white/10 text-white px-3 py-1 rounded-full">Before</span>
+                        <span class="text-xs bg-blue-600 text-white px-3 py-1 rounded-full">After</span>
+                    </div>
+                </div>
+                
+                <!-- Image Comparison Container -->
+                <div class="relative bg-slate-100" id="modalImageContainer">
+                    <!-- Images will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="font-display text-4xl lg:text-5xl font-bold mb-6">Experience These Results</h2>
+            <p class="text-lg text-slate-300 mb-8">
+                Radiant AI delivers consistent, professional-grade image correction without altering facial features or adding AI artifacts.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button id="galleryGetTrialBtn" class="bg-white hover:bg-slate-100 text-slate-900 px-8 py-4 rounded-full text-base font-semibold transition-all hover:shadow-xl transform hover:scale-105">
+                    Get Free Trial
+                </button>
+                <a href="index.html#comparison" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-full text-base font-semibold transition-all">
+                    View Comparison
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="bg-slate-900 text-white py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <p class="text-xs text-slate-500">
+                    © 2025 Radiant AI. Developed by Jaiho Edge & Jaiho Labs. Parent company: Jaiho Digital.
+                </p>
+                <div class="flex items-center space-x-6 text-xs text-slate-500">
+                    <a href="mailto:jaihodigital@gmail.com" class="hover:text-white transition-colors">jaihodigital@gmail.com</a>
+                    <span class="hidden md:inline">|</span>
+                    <a href="https://jaiho-digital.onrender.com" target="_blank" class="hover:text-white transition-colors">jaiho-digital.onrender.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
+            <button id="closeModal" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                
+                <h3 class="font-display text-2xl font-bold text-slate-900 mb-2">Get in Touch</h3>
+                <p class="text-slate-600 mb-6">For access to Radiant AI or inquiries, please contact:</p>
+                
+                <div class="bg-slate-50 rounded-xl p-6 mb-6">
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-sm text-slate-600 mb-1">Email</p>
+                            <a href="mailto:jaihodigital@gmail.com" class="text-blue-600 font-semibold hover:text-blue-700">jaihodigital@gmail.com</a>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-600 mb-1">Website</p>
+                            <a href="https://jaiho-digital.onrender.com" target="_blank" class="text-blue-600 font-semibold hover:text-blue-700">jaiho-digital.onrender.com</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="text-xs text-slate-500">We typically respond within 24 hours</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>
