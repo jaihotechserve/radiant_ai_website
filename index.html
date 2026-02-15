@@ -34,12 +34,40 @@
                 </div>
                 
                 <div class="flex items-center space-x-4">
-                    <button id="getAccessBtn" class="bg-slate-900 hover:bg-slate-800 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all hover:shadow-lg hover:shadow-slate-900/20 transform hover:scale-105">
+    
+                    <!-- Hamburger Button (Mobile Only) -->
+                    <button id="menuBtn" class="md:hidden flex flex-col space-y-1.5 focus:outline-none">
+                        <span class="w-6 h-0.5 bg-slate-900 transition-all"></span>
+                        <span class="w-6 h-0.5 bg-slate-900 transition-all"></span>
+                        <span class="w-6 h-0.5 bg-slate-900 transition-all"></span>
+                    </button>
+
+                    <button id="getAccessBtn" class="hidden md:block bg-slate-900 hover:bg-slate-800 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all hover:shadow-lg hover:shadow-slate-900/20 transform hover:scale-105">
                         Get Access
                     </button>
+
                 </div>
+
             </div>
         </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-slate-200">
+            <div class="px-6 py-6 space-y-4">
+                <a href="#product" class="block text-slate-700">Product</a>
+                <a href="#features" class="block text-slate-700">Features</a>
+                <a href="gallery.html" class="block text-slate-700">Gallery</a>
+                <a href="#comparison" class="block text-slate-700">Comparison</a>
+                <a href="#labsync" class="block text-slate-700">LabSync PDF</a>
+                <a href="#contact" class="block text-slate-700">Contact</a>
+
+                <button class="w-full mt-4 bg-slate-900 text-white px-6 py-3 rounded-full">
+                    Get Access
+                </button>
+            </div>
+        </div>
+
+
     </nav>
 
     <!-- Hero Section with Image Slider -->

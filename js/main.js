@@ -1,14 +1,7 @@
 // ===========================
 // Image Data Configuration
 // ===========================
-/*const imageData = [
-    { before: 'assets/woman_1_before.png', after: 'assets/woman_1_after.JPG', title: 'Portrait Enhancement 1' },
-    { before: 'assets/woman_2_before.png', after: 'assets/woman_2_after.JPG', title: 'Portrait Enhancement 2' },
-    { before: 'assets/woman_3_before.png', after: 'assets/woman_3_after.JPG', title: 'Portrait Enhancement 3' },
-    { before: 'assets/woman_5_before.png', after: 'assets/woman_5_after.JPG', title: 'Portrait Enhancement 4' },
-    { before: 'assets/couple_2_before.png', after: 'assets/couple_2_after.JPG', title: 'Couple Portrait 1' },
-    { before: 'assets/couple_3_before.jpg', after: 'assets/couple_3_after.JPG', title: 'Couple Portrait 2' }
-];*/
+
 
 const imageData = [
     { after: 'assets/woman_1_before.png', before: 'assets/woman_1_after.JPG', title: 'Portrait Enhancement 1' },
@@ -369,6 +362,35 @@ function initContactModal() {
 }
 
 // ===========================
+// Mobile Menu Toggle
+// ===========================
+function initMobileMenu() {
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (!menuBtn || !mobileMenu) return;
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+
+        // Optional: Animate hamburger to X
+        menuBtn.classList.toggle('open');
+        const spans = menuBtn.querySelectorAll('span');
+
+        if (menuBtn.classList.contains('open')) {
+            spans[0].classList.add('rotate-45', 'translate-y-2');
+            spans[1].classList.add('opacity-0');
+            spans[2].classList.add('-rotate-45', '-translate-y-2');
+        } else {
+            spans[0].classList.remove('rotate-45', 'translate-y-2');
+            spans[1].classList.remove('opacity-0');
+            spans[2].classList.remove('-rotate-45', '-translate-y-2');
+        }
+    });
+}
+
+
+// ===========================
 // Initialize Everything
 // ===========================
 document.addEventListener('DOMContentLoaded', () => {
@@ -376,6 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
     initSmoothScroll();
     initContactModal();
+    initMobileMenu();
     
     // Initialize GSAP animations after a short delay to ensure DOM is ready
     setTimeout(() => {
