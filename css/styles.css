@@ -461,3 +461,27 @@ a:focus {
     background-color: #3b82f6;
     color: #ffffff;
 }
+
+/*=====================*/
+/* ===========================
+   Infinite Partners Marquee
+   =========================== */
+.marquee-content {
+    flex-shrink: 0;
+    min-width: 100%;
+    animation: scrollX 25s linear infinite;
+}
+
+/* Pauses the animation when a user hovers over the section */
+.group:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+@keyframes scrollX {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
